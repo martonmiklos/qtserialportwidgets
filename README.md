@@ -13,16 +13,26 @@ The pri file adds the QtSerialWidgets project's path to the INCLUDEPATHS so use 
 
 The library contains the following widgets:
 
-SerialPortSettingsDialog:
-A standard dialog for manipulating the serial port parameters. 
-It also displays the retrived information about the current serial port.
-This dialog is retrived from the QtSerialport Terminal example.
-The dialog provides two methods for loading a QSerialPort settings to the gui and applying the gui settings to a QSerialPort instance. 
-There is also an option for passing a QSerialPort pointer to the dialog to handle the configuration of the port by the GUI. 
-In this case all configuration changes are taken into place after the pressing of the Apply button.
+- SerialPortSettingsDialog:
+	A standard dialog for manipulating the serial port parameters. 
+	It also displays the retrived information about the current serial port.
+	This dialog is retrived from the QtSerialport Terminal example.
+	The dialog provides two methods for loading a QSerialPort settings to the gui and applying the gui settings to a QSerialPort instance (loadSettingsFromPort and applySettingsToPort). 
+	There is also an option for passing a QSerialPort pointer to the dialog to handle the configuration of the port by the GUI. 
+	In this case all configuration changes are taken into place after the pressing of the Apply button.
+	The settings of the dialog can be saved and restored through a configured QSetting object with the saveSettings(QSettings &) and loadSettings(QSettings &) methods.
 
-SerialPortComboBox:
-A combobox which populates itself with the serial ports present on the system. The list is regenerated every time when the QComboBox's showPopup is called, so the plug'n play devices could be detected without any external coding. 
+- SerialPortComboBox:
+	A combobox which populates itself with the serial ports present on the system. The list is regenerated every time when the QComboBox's showPopup is called, so the plug'n play devices could be detected without any external coding. 
 
-BaudRateComboBox:
-A combobox showing the most common baudrates. It also have an option for specifying custom baud rates
+- BaudRateComboBox:
+	A combobox showing the most common baudrates. It also have an option for specifying custom baud rates
+
+- DataBitsComboBox:
+	A combobox for specifying the number of data bits.
+
+- ParityComboBox:
+	A combobox for specifying the parity.
+
+- StopbBitsComboBox:
+	A combobox for specifying the number of stop bits.
