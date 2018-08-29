@@ -1,22 +1,25 @@
-QT       += core gui 
+QT       += core widgets serialport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+INCLUDEPATH +=  $$PWD
 
-INCLUDEPATH +=  build \
-                $$PWD
+SOURCES += \
+    $$PWD/databitscombobox.cpp \
+    $$PWD/flowcontrolcombobox.cpp \
+    $$PWD/paritycombobox.cpp \
+    $$PWD/stopbitscombobox.cpp \
+    $$PWD/baudratecombobox.cpp \
+    $$PWD/serialportcombobox.cpp \
+    $$PWD/serialportsettingsdialog.cpp
 
-greaterThan(QT_MAJOR_VERSION, 4) {
-    LIBS += -lQt5SerialPort
-} else {
-    LIBS += -lqtserialport
-} 
+HEADERS += \
+    $$PWD/flowcontrolcombobox.h \
+    $$PWD/paritycombobox.h \
+    $$PWD/stopbitscombobox.h \
+    $$PWD/baudratecombobox.h \
+    $$PWD/serialportcombobox.h \
+    $$PWD/databitscombobox.h \
+    $$PWD/serialportsettingsdialog.h
 
-
-SOURCES += 	$$PWD/serialportsettingsdialog.cpp \
-                        $$PWD/serialportwidgets.cpp
-			
-HEADERS += 	$$PWD/serialportsettingsdialog.h \
-                        $$PWD/serialportwidgets.h
-			
-FORMS += 	$$PWD/serialportsettingsdialog.ui
+FORMS += \
+    $$PWD/serialportsettingsdialog.ui
 
