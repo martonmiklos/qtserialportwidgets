@@ -30,9 +30,9 @@ class BaudRateComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    BaudRateComboBox(QWidget *parent = NULL);
+    BaudRateComboBox(QWidget *parent = nullptr);
     BaudRateComboBox(QSerialPort::BaudRate baudRate = QSerialPort::Baud115200,
-                     QWidget *parent = NULL);
+                     QWidget *parent = nullptr);
     void setBaudRate(QSerialPort::BaudRate baudRate);
     QSerialPort::BaudRate baudRate();
 private:

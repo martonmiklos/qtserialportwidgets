@@ -29,9 +29,9 @@ class FlowControlComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    FlowControlComboBox(QWidget *parent = NULL);
+    FlowControlComboBox(QWidget *parent = nullptr);
     FlowControlComboBox(QSerialPort::FlowControl flowControl = QSerialPort::NoFlowControl,
-                        QWidget *parent = NULL);
+                        QWidget *parent = nullptr);
     bool setFlowControl(QSerialPort::FlowControl flowControl);
     QSerialPort::FlowControl flowControl();
 private:

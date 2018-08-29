@@ -29,9 +29,9 @@ class ParityComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    ParityComboBox(QWidget *parent = NULL);
+    ParityComboBox(QWidget *parent = nullptr);
     ParityComboBox(QSerialPort::Parity parity = QSerialPort::NoParity,
-                   QWidget *parent = NULL);
+                   QWidget *parent = nullptr);
     bool setParity(QSerialPort::Parity parity);
     QSerialPort::Parity parity();
 private:

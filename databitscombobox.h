@@ -29,9 +29,9 @@ class DataBitsComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    DataBitsComboBox(QWidget *parent = NULL);
+    DataBitsComboBox(QWidget *parent = nullptr);
     DataBitsComboBox(QSerialPort::DataBits dataBits = QSerialPort::Data8,
-                     QWidget *parent = NULL);
+                     QWidget *parent = nullptr);
     bool setDataBits(QSerialPort::DataBits dataBits);
     QSerialPort::DataBits dataBits();
 private:

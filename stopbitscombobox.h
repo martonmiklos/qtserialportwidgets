@@ -29,9 +29,9 @@ class StopBitsComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    StopBitsComboBox(QWidget *parent = NULL);
+    StopBitsComboBox(QWidget *parent = nullptr);
     StopBitsComboBox(QSerialPort::StopBits stopBits = QSerialPort::OneStop,
-                     QWidget *parent = NULL);
+                     QWidget *parent = nullptr);
     bool setStopBits(QSerialPort::StopBits stopBits);
     QSerialPort::StopBits stopBits();
 

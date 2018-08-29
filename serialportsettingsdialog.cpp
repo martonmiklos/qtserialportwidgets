@@ -53,7 +53,7 @@ SerialPortSettingsDialog::SerialPortSettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SerialPortSettingsDialog),
     widgetCount(0),
-    m_port(NULL)
+    m_port(nullptr)
 {
     ui->setupUi(this);
     ui->baudRateBox->setBaudRate(QSerialPort::Baud9600);
@@ -169,7 +169,7 @@ void SerialPortSettingsDialog::on_applyButton_clicked()
     updateSettings();
     hide();
 
-    if (m_port != NULL) {
+    if (m_port != nullptr) {
         // a port is availabe to handle
         if (m_port->portName() != ui->serialPortInfoListBox->currentText()) {
             // using a different port now

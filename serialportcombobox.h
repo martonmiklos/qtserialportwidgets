@@ -29,7 +29,7 @@ class SerialPortComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    SerialPortComboBox(QWidget *parent = NULL);
+    SerialPortComboBox(QWidget *parent = nullptr);
     bool selectPort(const QString &portName);
     void showPopup();
     enum SerialPortPropertyRole {

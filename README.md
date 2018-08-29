@@ -3,12 +3,12 @@
 QtSerialWidgets
 ================================
 
-This library contains the configuration widgets to be used in Qt widgets based applications using the QtSerialport library.
+This library contains configuration widgets to be used in Qt widgets based applications using the QSerialport class.
 
 You can use it as a a library: compile the qtserialportwidgets.pro project and use the library files in the bin folder.
-Or you can also include the qtserialportwidgets.pri file to your project and compile the widgets directly to your application.
+Or you can also include the qtserialportwidgets.pri file directly to your project and compile the widgets directly to your application.
 
-If you are using Qt Designer for designing your user interface delegate your widget on the layout to the appropiate settings widget.
+If you are using Qt Designer for designing your user interface promote your widgets on the layout to the necessary settings widget. (Right click on the QComboBox and select promote to.)
 The pri file adds the QtSerialWidgets project's path to the INCLUDEPATHS so use global include for the delegation.
 
 The library contains the following widgets:
