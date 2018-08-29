@@ -23,7 +23,7 @@
 #define SERIALPORTCOMBOBOX_H
 
 #include <QComboBox>
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 
 class SerialPortComboBox : public QComboBox
 {
@@ -32,6 +32,16 @@ public:
     SerialPortComboBox(QWidget *parent = NULL);
     bool selectPort(const QString &portName);
     void showPopup();
+    enum SerialPortPropertyRole {
+        Description = Qt::UserRole + 1,
+        Manufacturer,
+        SerialNumber,
+        Location,
+        VendorIdentifier,
+        ProductIdentifier
+    };
+    Q_ENUM(SerialPortPropertyRole)
+
 private:
     void refreshPorts();
 };

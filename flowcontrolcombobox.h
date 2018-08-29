@@ -23,7 +23,7 @@
 #define FLOWCONTROLCOMBOBOX_H
 
 #include <QComboBox>
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 
 class FlowControlComboBox : public QComboBox
 {

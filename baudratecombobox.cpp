@@ -22,7 +22,7 @@
 #include "baudratecombobox.h"
 
 #include <QLineEdit>
-#include <QMetaEnum>
+#include <QSerialPortInfo>
 
 BaudRateComboBox::BaudRateComboBox(QWidget *parent) :
     QComboBox(parent)
@@ -41,14 +41,10 @@ BaudRateComboBox::BaudRateComboBox(QSerialPort::BaudRate baudRate, QWidget *pare
 
 void BaudRateComboBox::fillBaudRates()
 {
-    QMetaEnum baudRateEnum = QMetaEnum::fromType<QSerialPort::BaudRate>();
-
-    for (int i = 0; i<baudRateEnum.keyCount(); i++) {
-        this->addItem(
-                    QString(baudRateEnum.key(i)).mid(4),
-                    baudRateEnum.value(i)
-                );
+    foreach (quint32 baud, QSerialPortInfo::standardBaudRates()) {
+        addItem(QString::number(baud), baud);
     }
+
     this->addItem(tr("Custom"));
     intValidator = new QIntValidator(0, 4000000, this);
 

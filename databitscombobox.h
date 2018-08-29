@@ -23,7 +23,7 @@
 #define DATABITSCOMBOBOX_H
 
 #include <QComboBox>
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 
 class DataBitsComboBox : public QComboBox
 {

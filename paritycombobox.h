@@ -23,7 +23,7 @@
 #define PARITYCOMBOBOX_H
 
 #include <QComboBox>
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 
 class ParityComboBox : public QComboBox
 {

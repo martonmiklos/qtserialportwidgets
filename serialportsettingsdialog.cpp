@@ -44,7 +44,7 @@
 #include "serialportsettingsdialog.h"
 #include "ui_serialportsettingsdialog.h"
 
-#include <QtSerialPort/QSerialPortInfo>
+#include <QSerialPortInfo>
 #include <QLineEdit>
 
 QT_USE_NAMESPACE
@@ -57,7 +57,7 @@ SerialPortSettingsDialog::SerialPortSettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->baudRateBox->setBaudRate(QSerialPort::Baud9600);
-    on_serialPortInfoListBox_currentIndexChanged(ui->serialPortInfoListBox->currentIndex());
+    on_serialPortInfoListBox_activated(ui->serialPortInfoListBox->currentIndex());
     updateSettings();
 }
 
@@ -82,7 +82,7 @@ void SerialPortSettingsDialog::loadSettingsFromPort(QSerialPort *port)
         ui->parityBox->setParity(port->parity());
         ui->stopBitsBox->setStopBits(port->stopBits());
         ui->flowControlBox->setFlowControl(port->flowControl());
-        on_serialPortInfoListBox_currentIndexChanged(ui->serialPortInfoListBox->currentIndex());
+        on_serialPortInfoListBox_activated(ui->serialPortInfoListBox->currentIndex());
         updateSettings();
     }
 }
@@ -188,17 +188,26 @@ void SerialPortSettingsDialog::on_applyButton_clicked()
     }
 }
 
-void SerialPortSettingsDialog::on_serialPortInfoListBox_currentIndexChanged(int index)
+void SerialPortSettingsDialog::on_serialPortInfoListBox_activated(int index)
 {
     if (index != -1) {
-        QStringList list = ui->serialPortInfoListBox->itemData(index).toStringList();
-        if (list.size() > 4) {
-            ui->descriptionLabel->setText(tr("Description: %1").arg(list.at(1)));
-            ui->manufacturerLabel->setText(tr("Manufacturer: %1").arg(list.at(2)));
-            ui->serialNumberLabel->setText(tr("Serial number: %1").arg(list.at(3)));
-            ui->locationLabel->setText(tr("Location: %1").arg(list.at(4)));
-            ui->vidLabel->setText(tr("Vendor Identifier: %1").arg(list.at(5)));
-            ui->pidLabel->setText(tr("Product Identifier: %1").arg(list.at(6)));
-        }
+        ui->descriptionLabel->setText(
+                    tr("Description: %1")
+                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::Description).toString()));
+        ui->manufacturerLabel->setText(
+                    tr("Manufacturer: %1")
+                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::Description).toString()));
+        ui->serialNumberLabel->setText(
+                    tr("Serial number: %1")
+                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::SerialNumber).toString()));
+        ui->locationLabel->setText(
+                    tr("Location: %1")
+                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::Location).toString()));
+        ui->vidLabel->setText(
+                    tr("Vendor Identifier: %1")
+                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::VendorIdentifier).toString()));
+        ui->pidLabel->setText(
+                    tr("Product Identifier: %1")
+                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::ProductIdentifier).toString()));
     }
 }

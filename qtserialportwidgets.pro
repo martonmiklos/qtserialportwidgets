@@ -19,3 +19,8 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+HEADERS += \
+    serialportselectormenu.h
+
+SOURCES += \

@@ -9,7 +9,8 @@ SOURCES += \
     $$PWD/stopbitscombobox.cpp \
     $$PWD/baudratecombobox.cpp \
     $$PWD/serialportcombobox.cpp \
-    $$PWD/serialportsettingsdialog.cpp
+    $$PWD/serialportsettingsdialog.cpp \
+    $$PWD/serialportselectormenu.cpp
 
 HEADERS += \
     $$PWD/flowcontrolcombobox.h \
@@ -18,7 +19,8 @@ HEADERS += \
     $$PWD/baudratecombobox.h \
     $$PWD/serialportcombobox.h \
     $$PWD/databitscombobox.h \
-    $$PWD/serialportsettingsdialog.h
+    $$PWD/serialportsettingsdialog.h \
+    $$PWD/serialportselectormenu.h
 
 FORMS += \
     $$PWD/serialportsettingsdialog.ui

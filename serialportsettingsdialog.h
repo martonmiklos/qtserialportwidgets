@@ -45,7 +45,7 @@
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 #include <QSettings>
 
 QT_USE_NAMESPACE
@@ -94,7 +94,7 @@ public:
 
 private slots:
     void on_applyButton_clicked();
-    void on_serialPortInfoListBox_currentIndexChanged(int index);
+    void on_serialPortInfoListBox_activated(int index);
 
 private:
     void updateSettings();

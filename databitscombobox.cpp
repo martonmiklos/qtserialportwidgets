@@ -21,7 +21,7 @@
 ****************************************************************************/
 #include "databitscombobox.h"
 
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 
 DataBitsComboBox::DataBitsComboBox(QWidget *parent) :
     QComboBox(parent)

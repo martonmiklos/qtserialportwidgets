@@ -24,7 +24,7 @@
 
 
 #include <QComboBox>
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 
 class BaudRateComboBox : public QComboBox
 {

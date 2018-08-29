@@ -23,7 +23,7 @@
 #define STOPBITSCOMBOBOX_H
 
 #include <QComboBox>
-#include <QtSerialPort/QSerialPort>
+#include <QSerialPort>
 
 class StopBitsComboBox : public QComboBox
 {
