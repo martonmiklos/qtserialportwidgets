@@ -25,7 +25,11 @@
 #include <QSerialPortInfo>
 
 SerialPortComboBox::SerialPortComboBox(QWidget *parent) :
-    QComboBox(parent)
+    QComboBox(parent),
+    m_pidFilterSet(false),
+    m_vidFilterSet(false),
+    m_pidFilterInverted(false),
+    m_vidFilterInverted(false)
 {
     refreshPorts();
 }
@@ -39,15 +43,24 @@ void SerialPortComboBox::refreshPorts()
     QList<QSerialPortInfo> availablePorts = QSerialPortInfo::availablePorts();
     /* Loop through the current combobox items and remove the non present ports */
     for (int i = 0; i<this->count(); i++) {
-        bool portFound = false;
+        bool leaveExistingPort = false;
         foreach (const QSerialPortInfo &info, availablePorts) {
-            if (info.portName() == this->itemText(i)) {
-                portFound = true;
+            if (info.portName() == this->itemData(i).toString()) {
+                leaveExistingPort = true;
+                if (
+                        (!m_vidFilterInverted && m_vidFilterSet && info.vendorIdentifier() != m_vidFilter) ||
+                        (!m_pidFilterInverted && m_pidFilterSet && info.productIdentifier() != m_pidFilter) ||
+                        (m_vidFilterInverted && m_vidFilterSet && info.vendorIdentifier() == m_vidFilter) ||
+                        (m_pidFilterInverted && m_pidFilterSet && info.productIdentifier() == m_pidFilter)
+                        ) {
+                    // an existing port filtered out by the PID/VID filter -> remove it
+                    leaveExistingPort = false;
+                }
                 break;
             }
         }
 
-        if (!portFound) {
+        if (!leaveExistingPort) {
             this->removeItem(i);
             i--;
         }
@@ -57,6 +70,14 @@ void SerialPortComboBox::refreshPorts()
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
         /* If a port is not present add it to the combobox */
         if (this->findText(info.portName()) == -1) {
+            if ((m_vidFilterSet &&
+                 (((!m_vidFilterInverted && (info.vendorIdentifier() != m_vidFilter)) || (m_vidFilterInverted && (info.vendorIdentifier() == m_vidFilter))))) ||
+                (m_pidFilterSet &&
+                  ((!m_pidFilterInverted && (info.productIdentifier() != m_pidFilter)) || (m_pidFilterInverted && (info.productIdentifier() == m_pidFilter))))
+                    ) {
+                // skip this port if it filtered out
+                continue;
+            }
 #if defined(Q_OS_LINUX) || defined(Q_OS_MACOS)
             this->addItem(info.systemLocation(), info.systemLocation());
 #else
@@ -98,4 +119,32 @@ void SerialPortComboBox::showPopup()
 {
     refreshPorts();
     QComboBox::showPopup();
+}
+
+void SerialPortComboBox::setProductIdentifierFilter(quint16 pidFilter, bool invertedFilter)
+{
+    m_pidFilter = pidFilter;
+    m_pidFilterSet = true;
+    m_pidFilterInverted = invertedFilter;
+    refreshPorts();
+}
+
+void SerialPortComboBox::setVendorIdentifierFilter(quint16 vidFilter, bool invertedFilter)
+{
+    m_vidFilter = vidFilter;
+    m_vidFilterSet = true;
+    m_vidFilterInverted = invertedFilter;
+    refreshPorts();
+}
+
+void SerialPortComboBox::clearProductIdentifierFilter()
+{
+    m_pidFilterSet = false;
+    refreshPorts();
+}
+
+void SerialPortComboBox::clearVendorIdentifierFilter()
+{
+    m_vidFilterSet = false;
+    refreshPorts();
 }

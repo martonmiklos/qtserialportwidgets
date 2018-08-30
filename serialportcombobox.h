@@ -42,8 +42,18 @@ public:
     };
     Q_ENUM(SerialPortPropertyRole)
 
+    void setProductIdentifierFilter(quint16 pidFilter, bool invertedFilter = false);
+    void setVendorIdentifierFilter(quint16 vidFilter, bool invertedFilter = false);
+
+    void clearProductIdentifierFilter();
+    void clearVendorIdentifierFilter();
+
 private:
     void refreshPorts();
+
+    quint16 m_pidFilter, m_vidFilter;
+    bool m_pidFilterSet, m_vidFilterSet;
+    bool m_pidFilterInverted, m_vidFilterInverted;
 };
 
 #endif // SERIALPORTCOMBOBOX_H

@@ -24,6 +24,7 @@ The library contains the following widgets:
  * There is also an option for passing a QSerialPort pointer to the dialog to handle the configuration of the port by the GUI. 
  * In this case all configuration changes are taken into place after the pressing of the Apply button.
  * The settings of the dialog can be saved and restored through a configured QSetting object with the saveSettings(QSettings &) and loadSettings(QSettings &) methods.
+ * The displayed ports can be filtered by the VID:PID identifiers
 
 ## SerialPortComboBox:
 
