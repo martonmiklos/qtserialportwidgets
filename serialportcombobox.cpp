@@ -92,7 +92,7 @@ void SerialPortComboBox::refreshPorts()
                                   QString("0x%1").arg((uint)info.vendorIdentifier(), 4, 16, QChar('0')).toUpper(),
                                   VendorIdentifier);
             } else {
-                this->setItemData(this->count() - 1, QStringLiteral(""), VendorIdentifier);
+                this->setItemData(this->count() - 1, QString(), VendorIdentifier);
             }
 
             if (info.hasProductIdentifier()) {
@@ -100,7 +100,7 @@ void SerialPortComboBox::refreshPorts()
                                   QString("0x%1").arg((uint)info.productIdentifier(), 4, 16, QChar('0')).toUpper(),
                                   ProductIdentifier);
             } else {
-                this->setItemData(this->count() - 1, QStringLiteral(""), ProductIdentifier);
+                this->setItemData(this->count() - 1, QString(), ProductIdentifier);
             }
         }
     }
