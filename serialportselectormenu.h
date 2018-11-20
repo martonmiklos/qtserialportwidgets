@@ -4,8 +4,9 @@
 
 #include <QMenu>
 #include <QSerialPort>
+#include "qtserialportwidgets_global.h"
 
-class SerialportSelectorMenu
+class QTSERIALPORTWIDGETS_EXPORT SerialportSelectorMenu
 {
 public:
     SerialportSelectorMenu();

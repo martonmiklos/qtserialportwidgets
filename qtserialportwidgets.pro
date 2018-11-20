@@ -6,6 +6,8 @@
 
 TARGET = qtserialportwidgets
 TEMPLATE = lib
+#CONFIG += staticlib
+DEFINES += QTSERIALPORTWIDGETS_LIBRARY
 
 OBJECTS_DIR = build
 MOC_DIR = build
