@@ -20,7 +20,8 @@ HEADERS += \
     $$PWD/serialportcombobox.h \
     $$PWD/databitscombobox.h \
     $$PWD/serialportsettingsdialog.h \
-    $$PWD/serialportselectormenu.h
+    $$PWD/serialportselectormenu.h \
+    $$PWD/qtserialportwidgets_global.h
 
 FORMS += \
     $$PWD/serialportsettingsdialog.ui
