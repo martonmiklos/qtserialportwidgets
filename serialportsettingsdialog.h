@@ -80,7 +80,7 @@ public:
         QString stringFlowControl;
     };
 
-    explicit SerialPortSettingsDialog(QWidget *parent = 0);
+    explicit SerialPortSettingsDialog(QWidget *parent = nullptr);
     ~SerialPortSettingsDialog();
     void addWidget(QWidget *widget);
     Settings settings() const;
@@ -104,6 +104,9 @@ private:
     Settings currentSettings;
     QSerialPort *m_port;
     void applyPortSettings(QSerialPort *port);
+
+signals:
+    void portSettingsApplied();
 };
 
 #endif // SETTINGSDIALOG_H

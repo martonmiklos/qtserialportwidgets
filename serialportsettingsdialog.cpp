@@ -170,7 +170,7 @@ void SerialPortSettingsDialog::on_applyButton_clicked()
     hide();
 
     if (m_port != nullptr) {
-        // a port is availabe to handle
+        // a port is available to handle
         if (m_port->portName() != ui->serialPortInfoListBox->currentText()) {
             // using a different port now
             if (m_port->isOpen()) {
@@ -185,6 +185,7 @@ void SerialPortSettingsDialog::on_applyButton_clicked()
             // using the same port apply the settings and good to go
             applySettingsToPort(m_port);
         }
+        emit portSettingsApplied();
     }
 }
 
