@@ -35,7 +35,7 @@ public:
     enum SerialPortPropertyRole {
         Description = Qt::UserRole + 1,
         Manufacturer,
-        SerialNumber,
+        Serialnumber,
         Location,
         VendorIdentifier,
         ProductIdentifier

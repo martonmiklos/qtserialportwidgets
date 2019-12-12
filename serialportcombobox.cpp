@@ -85,7 +85,7 @@ void SerialPortComboBox::refreshPorts()
 #endif
             this->setItemData(this->count() - 1, info.description(), Description);
             this->setItemData(this->count() - 1, info.manufacturer(), Manufacturer);
-            this->setItemData(this->count() - 1, info.serialNumber(), SerialNumber);
+            this->setItemData(this->count() - 1, info.serialNumber(), Serialnumber);
             this->setItemData(this->count() - 1, info.systemLocation(), Location);
             if (info.hasVendorIdentifier()) {
                 this->setItemData(this->count() - 1,
