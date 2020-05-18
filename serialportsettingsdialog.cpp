@@ -200,7 +200,7 @@ void SerialPortSettingsDialog::on_serialPortInfoListBox_activated(int index)
                     .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::Description).toString()));
         ui->serialNumberLabel->setText(
                     tr("Serial number: %1")
-                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::SerialNumber).toString()));
+                    .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::Serialnumber).toString()));
         ui->locationLabel->setText(
                     tr("Location: %1")
                     .arg(ui->serialPortInfoListBox->itemData(index, SerialPortComboBox::Location).toString()));
