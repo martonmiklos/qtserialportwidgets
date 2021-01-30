@@ -23,37 +23,61 @@
 #define SERIALPORTCOMBOBOX_H
 
 #include <QComboBox>
+#include <QRegularExpression>
 #include <QSerialPort>
 
 class SerialPortComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    SerialPortComboBox(QWidget *parent = nullptr);
-    bool selectPort(const QString &portName);
-    void showPopup();
     enum SerialPortPropertyRole {
         Description = Qt::UserRole + 1,
         Manufacturer,
         Serialnumber,
         Location,
         VendorIdentifier,
-        ProductIdentifier
+        ProductIdentifier,
+        PortName
     };
     Q_ENUM(SerialPortPropertyRole)
 
+
+    enum DisplayMode {
+        PortNameOnly,
+        PortNameAndSerial,
+        PortNameAndVIDPID,
+        PortNameAndDescription
+    };
+
+    SerialPortComboBox(QWidget *parent = nullptr);
+    SerialPortComboBox(DisplayMode displayMode, QWidget *parent = nullptr);
+    bool selectPort(const QString &portName);
+    void showPopup();
+
     void setProductIdentifierFilter(quint16 pidFilter, bool invertedFilter = false);
     void setVendorIdentifierFilter(quint16 vidFilter, bool invertedFilter = false);
+    void setSerialFilter(const QString & serialFilter, bool invertedFilter = false);
 
     void clearProductIdentifierFilter();
     void clearVendorIdentifierFilter();
 
-private:
+    QString currentPortName() const;
+    void setCurrentPortName(const QString &portName);
+
+    DisplayMode displayMode() const;
+    void setDisplayMode(const DisplayMode &displayMode);
+
+protected:
     void refreshPorts();
 
     quint16 m_pidFilter, m_vidFilter;
-    bool m_pidFilterSet, m_vidFilterSet;
-    bool m_pidFilterInverted, m_vidFilterInverted;
+    bool m_pidFilterSet = false, m_vidFilterSet = false;
+    bool m_pidFilterInverted = false, m_vidFilterInverted = false;
+    DisplayMode m_displayMode = PortNameOnly;
+    QString m_serialFilter;
+    bool m_serialFilterSet = false;
+    QRegularExpression m_serialFilterRe;
+    bool m_serialFilterInverted = false;
 };
 
 #endif // SERIALPORTCOMBOBOX_H
