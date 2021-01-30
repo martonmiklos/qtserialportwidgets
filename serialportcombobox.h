@@ -55,11 +55,22 @@ public:
     void showPopup();
 
     void setProductIdentifierFilter(quint16 pidFilter, bool invertedFilter = false);
+    void clearProductIdentifierFilter();
+
     void setVendorIdentifierFilter(quint16 vidFilter, bool invertedFilter = false);
+    void clearVendorIdentifierFilter();
+
+    /**
+     * @brief setSerialFilter
+     * Allow listing serial ports with a specific serial number.
+     * @param serialFilter
+     * Wildcarding with "?" and "*" is supported
+     * @param invertedFilter
+     * If true then the serial ports with serialnumber matching the serialFilter
+     * will not be populated to the comboBox
+     */
     void setSerialFilter(const QString & serialFilter, bool invertedFilter = false);
 
-    void clearProductIdentifierFilter();
-    void clearVendorIdentifierFilter();
 
     QString currentPortName() const;
     void setCurrentPortName(const QString &portName);
